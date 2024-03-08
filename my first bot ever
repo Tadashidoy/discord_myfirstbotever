@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 import random
 
 # La variable intents almacena los privilegios del bot
@@ -6,15 +7,15 @@ intents = discord.Intents.default()
 # Activar el privilegio de lectura de mensajes
 intents.message_content = True
 # Crear un bot en la variable cliente y transferirle los privilegios
-client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='$', intents=intents)
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'Hemos iniciado sesión como {client.user}')
+    print(f'Hemos iniciado sesión como {bot.user}')
 
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == bot.user:
         return
     if message.content.startswith('$hello'):
         await message.channel.send("Hi!")
@@ -37,4 +38,19 @@ def gen_pass(pass_lenght):
 
     return password
 
-client.run("MTIxMjkyMjQ2NTU3MjA5ODA4OA.GElRu3.WTE1MC7KIAK9GJBbCYG6pY6By-LQ-abd9HDwBQ")
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Hola, soy un bot {bot.user}!')
+
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
+bot.run("MTIxMjkyMjQ2NTU3MjA5ODA4OA.GElRu3.WTE1MC7KIAK9GJBbCYG6pY6By-LQ-abd9HDwBQ")
