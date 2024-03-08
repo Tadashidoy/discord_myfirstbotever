@@ -78,4 +78,4 @@ async def cointoss(ctx):
     else:
         moneda="¡cruz!"
     await ctx.send(moneda)
-bot.run("MTIxMjkyMjQ2NTU3MjA5ODA4OA.GElRu3.WTE1MC7KIAK9GJBbCYG6pY6By-LQ-abd9HDwBQ")
+bot.run()
