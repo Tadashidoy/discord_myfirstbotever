@@ -53,4 +53,29 @@ async def hello(ctx):
 @bot.command()
 async def heh(ctx, count_heh = 5):
     await ctx.send("he" * count_heh)
+
+@bot.command()
+async def add(ctx, left: float, right: float):
+    await ctx.send(left + right)
+
+@bot.command()
+async def substract(ctx, left: float, right: float):
+    await ctx.send(left - right)
+
+@bot.command()
+async def multiply(ctx, left: float, right: float):
+    await ctx.send(left * right)
+
+@bot.command()
+async def divide(ctx, left: float, right: float):
+    await ctx.send(left / right)
+
+@bot.command()
+async def cointoss(ctx):
+    numero=random.randint(1,2)
+    if numero==1:
+        moneda="¡cara!"
+    else:
+        moneda="¡cruz!"
+    await ctx.send(moneda)
 bot.run("MTIxMjkyMjQ2NTU3MjA5ODA4OA.GElRu3.WTE1MC7KIAK9GJBbCYG6pY6By-LQ-abd9HDwBQ")
